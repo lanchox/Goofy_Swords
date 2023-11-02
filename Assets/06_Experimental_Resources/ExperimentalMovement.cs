@@ -6,45 +6,49 @@ using UnityEngine;
 
 public class ExperimentalMovement : MonoBehaviour
 {
-    float speed;
     private Rigidbody rb;
-
+    [SerializeField]private Transform player, sword;
+    private MotionCamera cam;
+    [SerializeField]private float speed;
     private void Start()
     {
+        player = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
+        cam = GetComponentInChildren<MotionCamera>();
     }
 
     private void Update()
     {
+        PlayerMovement();
+        PlayerRotation();
+        SwordMovement();
+    }
+
+    void PlayerMovement()
+    {
+        float hor = Input.GetAxisRaw("Horizontal") * speed;
+        float ver = Input.GetAxisRaw("Vertical") * speed;
+        rb.velocity = player.right * hor + player.forward * ver + new Vector3(0f, rb.velocity.y,0f);
+    }
+
+    void PlayerRotation()
+    {
+        if (cam.target != null)
+        {
+            Vector3 aPos = player.position;
+            Quaternion aRot = player.rotation;
+            Vector3 bPos = cam.target.position;
+            Quaternion bRot = Quaternion.LookRotation(new Vector3(bPos.x, aPos.y, bPos.z) - aPos);
+            player.rotation = Quaternion.Slerp(aRot, bRot, cam.focusSlerp);
+        }
+    }
+    void SwordMovement()
+    {
         Vector3 m = Input.mousePosition;
-        float xSync = Screen.width / 3f;
-        float ySync = Screen.height / 3f;
-        float hor;
-        float ver;
-        if (Mathf.Round(m.x) < xSync)
-        {
-            hor = -0.75f;
-        }
-        else if (Mathf.Round(m.x) >  xSync * 2)
-        {
-            hor = 0.75f;
-        }
-        else
-        {
-            hor = (Input.mousePosition.x / Screen.width) * 1.5f - 0.75f;
-        }
-        if (Mathf.Round(m.y) < ySync)
-        {
-            ver = -1;
-        }
-        else if (Mathf.Round(m.y) >  ySync * 2)
-        {
-            ver = 1f;
-        }
-        else
-        {
-            ver = (Input.mousePosition.x / Screen.width) * 2f - 1f;
-        }
-        rb.velocity = Vector3.right * hor + Vector3.forward * ver + new Vector3(0f, rb.velocity.y, 0f);
+        float xSync = Screen.width/3f;
+        float ySync = Screen.height/3f;
+        float hor = Mathf.Clamp((m.x / xSync) * 1.5f - 0.75f, -2f,2f);
+        float ver = Mathf.Clamp((m.y / ySync) * 2f - 1f, -1f, 2f);
+        sword.position = player.position + player.right * hor + player.up * ver + player.forward * 1.5f;
     }
 }
