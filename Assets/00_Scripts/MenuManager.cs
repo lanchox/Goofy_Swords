@@ -1,5 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+using System.Collections;
 
 
 
@@ -18,12 +22,13 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Opciones");
     }
 
-    public void Quit()
+   public void Quit()
     {
-        
-       
+        #if UNITY_EDITOR 
+        EditorApplication.isPlaying = false;
+        #else 
         Application.Quit();
-        
+        #endif
     }
 }
 

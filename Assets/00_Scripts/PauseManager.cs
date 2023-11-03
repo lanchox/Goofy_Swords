@@ -8,7 +8,7 @@ using UnityEditor;
 public class PauseManager : MonoBehaviour {
     
     Canvas canvas;
-    
+        
     void Start()
     {
         canvas = GetComponent<Canvas>();
@@ -27,6 +27,7 @@ public class PauseManager : MonoBehaviour {
     {
         canvas.enabled = !canvas.enabled;
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        
     }
     
     public void Quit()
