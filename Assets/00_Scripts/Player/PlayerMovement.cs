@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
+using Unity.Netcode;
+using Unity.Netcode.Components;
 
-public class ExperimentalMovement : MonoBehaviour
+
+
+public class PlayerMovement : NetworkBehaviour
 {
     private Rigidbody rb;
     [SerializeField]private Transform player, sword;
@@ -19,16 +22,16 @@ public class ExperimentalMovement : MonoBehaviour
 
     private void Update()
     {
-        PlayerMovement();
+        PlayerMotion();
         PlayerRotation();
         SwordMovement();
     }
 
-    void PlayerMovement()
+    void PlayerMotion()
     {
         float hor = Input.GetAxisRaw("Horizontal") * speed;
         float ver = Input.GetAxisRaw("Vertical") * speed;
-        rb.velocity = player.right * hor + player.forward * ver + new Vector3(0f, rb.velocity.y,0f);
+        rb.AddForce(hor * player.right + ver * player.forward, ForceMode.Force);
     }
 
     void PlayerRotation()
@@ -50,5 +53,14 @@ public class ExperimentalMovement : MonoBehaviour
         float hor = Mathf.Clamp((m.x / xSync) * 1.5f - 0.75f, -2f,2f);
         float ver = Mathf.Clamp((m.y / ySync) * 2f - 1f, -1f, 2f);
         sword.position = player.position + player.right * hor + player.up * ver + player.forward * 1.5f;
+    }
+
+}
+
+public class clienta : NetworkTransform
+{
+    protected override bool OnIsServerAuthoritative()
+    {
+        return false;
     }
 }
