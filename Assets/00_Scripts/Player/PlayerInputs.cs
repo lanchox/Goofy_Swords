@@ -42,10 +42,11 @@ public class PlayerInputs : NetworkBehaviour
         if (cam.target != null)
         {
             Vector3 aPos = pelvis.position;
-            Quaternion aRot = pelvis.rotation;
             Vector3 bPos = cam.target.position;
-            Quaternion bRot = Quaternion.LookRotation(new Vector3(bPos.x, aPos.y, bPos.z) - aPos);
-            pelvis.rotation = Quaternion.Slerp(aRot, bRot, cam.focusSlerp);
+            Vector3 final = bPos - aPos;
+            final.y = 0f;
+            Quaternion yRot = Quaternion.LookRotation(final);
+            pelvis.rotation = yRot;
         }
     }
     void SwordMovement()
