@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 410853860}
   - component: {fileID: 410853859}
   - component: {fileID: 410853858}
+  - component: {fileID: 410853861}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -609,6 +610,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &410853861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410853857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc617275205a5648b82746443799309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterColorManager: {fileID: 826269673}
 --- !u!1 &826269661
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +641,7 @@ GameObject:
   - component: {fileID: 826269669}
   - component: {fileID: 826269671}
   - component: {fileID: 826269670}
+  - component: {fileID: 826269673}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -847,6 +862,18 @@ MonoBehaviour:
     m_Bits: 1
   fakeSword: {fileID: 1157093582}
   isGrounded: 0
+--- !u!114 &826269673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826269661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dace980d5a6cd74a8cad93df9828727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1261,7 @@ PrefabInstance:
     - target: {fileID: 710406511310315341, guid: 50836a56827c01d4782842828a2e6217,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Quit
+      value: Inicio
       objectReference: {fileID: 0}
     - target: {fileID: 710406511490503128, guid: 50836a56827c01d4782842828a2e6217,
         type: 3}

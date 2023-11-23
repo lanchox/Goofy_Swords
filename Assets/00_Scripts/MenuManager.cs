@@ -22,7 +22,13 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Opciones");
     }
 
-   public void Quit()
+    public void StoreButton()
+    {
+
+        SceneManager.LoadScene("Store");
+    }
+
+    public void Quit()
     {
         #if UNITY_EDITOR 
         EditorApplication.isPlaying = false;

@@ -6,6 +6,7 @@ public class BotonVolver : MonoBehaviour
     public void ButtonBack()
     {
 
-        SceneManager.LoadScene("Inicio");
+        SceneManager.LoadScene("00_MainMenu");
     }
+
 }

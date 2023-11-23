@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -30,12 +31,8 @@ public class PauseManager : MonoBehaviour {
         
     }
     
-    public void Quit()
+    public void Inicio()
     {
-        #if UNITY_EDITOR 
-        EditorApplication.isPlaying = false;
-        #else 
-        Application.Quit();
-        #endif
+        SceneManager.LoadScene("00_MainMenu");
     }
 }
