@@ -1,24 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
-using UnityEngine.Experimental.Rendering;
 
 public class HostSystemUI : MonoBehaviour
 {
     [SerializeField] private Button[] uiButtons;
     [SerializeField] private Transform popUp;
-    [SerializeField] TextMeshProUGUI textBar;
-    private bool openPopUp;
+    public TextMeshProUGUI ipBar, portBar;
+    private bool openPopUp, enterIp;
     private void Start()
     {
         popUp.localScale = Vector3.zero;
-        textBar.text = "";
+        ipBar.text = "";
+        portBar.text = "7777";
         uiButtons[0].onClick.AddListener(()=> SceneManager.LoadScene(""));
         uiButtons[1].onClick.AddListener(OpenPanel);
         uiButtons[2].onClick.AddListener(ConnectTo);
@@ -31,24 +30,43 @@ public class HostSystemUI : MonoBehaviour
         {
             if (Input.inputString != "" && !Input.GetKey(KeyCode.Backspace))
             {
-                textBar.text += Input.inputString;
+                if (!enterIp)
+                {
+                    ipBar.text += Input.inputString;
+                }
+                else
+                {
+                    portBar.text += Input.inputString;
+                }
             }
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                ConnectTo();
+                if (!enterIp)
+                {
+                    enterIp = true;
+                }
+                else
+                {
+                     ConnectTo();
+                }
             }
-            if(Input.GetKeyDown(KeyCode.Backspace) && textBar.text.Length > 0)
+            if(Input.GetKeyDown(KeyCode.Backspace))
             {
-                string deleteLetter = textBar.text.Substring(0, textBar.text.Length - 1);
-                textBar.text = deleteLetter;
+                if (!enterIp && ipBar.text.Length > 0)
+                {
+                    string deleteLetter = ipBar.text.Substring(0, ipBar.text.Length - 1);
+                    ipBar.text = deleteLetter;
+                }
+                else if(portBar.text.Length > 0)
+                {
+                    string deleteLetter = portBar.text.Substring(0, portBar.text.Length - 1);
+                    portBar.text = deleteLetter;
+                }
             }
-        }
-        else
-        {
-            /*if(Input.GetKeyDown(KeyCode.Escape))
+            if(Input.GetKeyDown(KeyCode.Escape))
             {
                 OpenPanel();
-            }*/
+            }
         }
     }
     public void OpenPanel()
@@ -57,7 +75,8 @@ public class HostSystemUI : MonoBehaviour
         {
             popUp.DOScale(1f, 0.8f);
             openPopUp = true;
-            textBar.text = "";
+            ipBar.text = "";
+            portBar.text = "7777";
         }
         else
         {
