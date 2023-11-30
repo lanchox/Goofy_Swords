@@ -13,10 +13,10 @@ public class NetSaveData : MonoBehaviour
     public string proxyAddress = "$-CaOdNr-N-eEsCsT-$";
     public string proxyPort = "$-OpTo-H-rEtR-$";
     public string isHost = "$-PhAo-R-mTeY-$";
-
+    public UnityTransport ut;
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "")
+        if (SceneManager.GetActiveScene().name == "EscenaBarcoPirata")
         {
             if (PlayerPrefs.GetInt(isHost) == 1)
             {
@@ -33,11 +33,11 @@ public class NetSaveData : MonoBehaviour
     {
         PlayerPrefs.SetString(proxyAddress, GameObject.Find("ManagerAgent").GetComponent<HostSystemUI>().ipBar.text);
         PlayerPrefs.SetString(proxyPort, GameObject.Find("ManagerAgent").GetComponent<HostSystemUI>().portBar.text);
+        PlayerPrefs.SetInt(isHost, 0);
     }
 
     public void ClientStarter()
     {
-        UnityTransport ut = GetComponent<UnityTransport>();
         ut.ConnectionData.Address = PlayerPrefs.GetString(proxyAddress);
         string portString = PlayerPrefs.GetString(proxyPort);
         ut.ConnectionData.Port = ushort.Parse(portString);
@@ -51,10 +51,5 @@ public class NetSaveData : MonoBehaviour
     public void HostExist()
     {
         PlayerPrefs.SetInt(isHost, 1);
-    }
-
-    public void ClientExist()
-    {
-        PlayerPrefs.SetInt(isHost, 0);
     }
 }

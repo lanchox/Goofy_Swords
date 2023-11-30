@@ -5,16 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/05_Scenes/00_MainMenu.unity
     guid: 3a58dd3481e15d8499af2acc5ba7ddb7
-  - enabled: 1
+  - enabled: 0
     path: Assets/05_Scenes/Opciones.unity
     guid: 25f3148652872da498de7b6788c5528e
-  - enabled: 1
+  - enabled: 0
     path: Assets/05_Scenes/Banco_De_Pruebas.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/05_Scenes/Store.unity
     guid: 95257a5ab4729a047a000d08ca2a541f
+  - enabled: 1
+    path: Assets/05_Scenes/01_Connect.unity
+    guid: 120a6925af868944bae7082b9d534d6b
+  - enabled: 1
+    path: Assets/05_Scenes/EscenarioBarcoPirata.unity
+    guid: 06804e44ccce9ae46811e6c0d4e4c955
   m_configObjects: {}

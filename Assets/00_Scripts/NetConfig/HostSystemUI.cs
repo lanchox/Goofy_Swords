@@ -18,7 +18,7 @@ public class HostSystemUI : MonoBehaviour
         popUp.localScale = Vector3.zero;
         ipBar.text = "";
         portBar.text = "7777";
-        uiButtons[0].onClick.AddListener(()=> SceneManager.LoadScene(""));
+        uiButtons[0].onClick.AddListener(ConnectTo);
         uiButtons[1].onClick.AddListener(OpenPanel);
         uiButtons[2].onClick.AddListener(ConnectTo);
         uiButtons[3].onClick.AddListener(OpenPanel);
@@ -86,6 +86,6 @@ public class HostSystemUI : MonoBehaviour
     }
     public void ConnectTo()
     {
-        
+        SceneManager.LoadScene(1);
     }
 }
