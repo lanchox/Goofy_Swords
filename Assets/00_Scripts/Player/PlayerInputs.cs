@@ -6,17 +6,16 @@ using Unity.Netcode;
 using Unity.Netcode.Components;
 public class PlayerInputs : NetworkBehaviour
 {
-    private Rigidbody rbPelvis;
-    private Transform pelvis;
+    private Rigidbody rb;
+    private Transform player;
     private MotionCamera cam;
-    [SerializeField]private float speed, jumpForce;
-    [SerializeField]private LayerMask layer;
+    [SerializeField]private float speed, hor, ver;
     [SerializeField]private Transform fakeSword;
     [SerializeField] private bool isGrounded;
     private void Start()
     {
-        rbPelvis = GetComponent<Rigidbody>();
-        pelvis = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody>();
+        player = GetComponent<Transform>();
         cam = GetComponentInChildren<MotionCamera>();
     }
 
@@ -28,25 +27,20 @@ public class PlayerInputs : NetworkBehaviour
     }
     private void PlayerMovement()
     {
-        float hor = Input.GetAxis("Horizontal") * speed;
-        float ver = Input.GetAxis("Vertical") * speed;
-        rbPelvis.AddForce(pelvis.forward * ver + pelvis.right * hor, ForceMode.Force);
-        isGrounded = Physics.Raycast(pelvis.position, pelvis.up * -1f, 1.01f,layer);
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            rbPelvis.AddForce(pelvis.up * jumpForce, ForceMode.Impulse);
-        }
+        hor = Input.GetAxis("Horizontal") * speed;
+        ver = Input.GetAxis("Vertical") * speed;
+        rb.AddForce(player.forward * ver + player.right * hor, ForceMode.Force);
     }
     private void PlayerRotation()
     {
         if (cam.target != null)
         {
-            Vector3 aPos = pelvis.position;
+            Vector3 aPos = player.position;
             Vector3 bPos = cam.target.position;
             Vector3 final = bPos - aPos;
             final.y = 0f;
             Quaternion yRot = Quaternion.LookRotation(final);
-            pelvis.rotation = yRot;
+            player.rotation = Quaternion.Slerp(player.rotation,yRot, cam.focusSlerp);
         }
     }
     void SwordMovement()
@@ -56,7 +50,7 @@ public class PlayerInputs : NetworkBehaviour
         float ySync = Screen.height/3f;
         float hor = Mathf.Clamp((m.x / xSync) * 1.5f - 0.75f, -2f,2f);
         float ver = Mathf.Clamp((m.y / ySync) * 2f - 1f, -1f, 2f);
-        fakeSword.position = pelvis.position + pelvis.right * hor + pelvis.up * ver + pelvis.forward * 1.5f;
+        fakeSword.position = player.position + player.right * hor + player.up * ver + player.forward * 1.5f;
     }
 }
 

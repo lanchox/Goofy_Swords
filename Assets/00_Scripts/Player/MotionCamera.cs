@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MotionCamera : MonoBehaviour
 {
-    [SerializeField]Transform camPivot;
+    public Transform camPivot;
     public float focusSlerp;
     public Transform target;
     void Start()
