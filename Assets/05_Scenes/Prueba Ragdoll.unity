@@ -450,7 +450,7 @@ Transform:
   m_GameObject: {fileID: 749192144}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6087604, y: -0, z: -0, w: 0.7933541}
-  m_LocalPosition: {x: 0, y: 1.333, z: 0.828}
+  m_LocalPosition: {x: 0, y: 1.102, z: 0.856}
   m_LocalScale: {x: 0.08, y: 0.5, z: 0.07999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -519,7 +519,7 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
@@ -695,7 +695,7 @@ Transform:
   m_GameObject: {fileID: 1164820865}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.466, z: 1.314}
+  m_LocalPosition: {x: 0, y: 1.23, z: 1.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -712,8 +712,8 @@ HingeJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 0
+  m_ConnectedAnchor: {x: 0.001, y: 0.001, z: 0.001}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -725,12 +725,12 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: 0
-    max: 0
+    min: -10
+    max: 10
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -1412,14 +1412,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905543391751622905}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.19856139, y: -0.07513229, z: 0.50177383, w: 0.8385413}
+  m_LocalRotation: {x: -0.06131749, y: 0.35099426, z: 0.0711035, w: 0.9316585}
   m_LocalPosition: {x: -5.762558e-11, y: 0.0039001487, z: -3.0400316e-10}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5631856876424901430}
   m_Father: {fileID: 4918819967882601606}
-  m_LocalEulerAnglesHint: {x: -14.928, y: -19.672, z: 64.394}
+  m_LocalEulerAnglesHint: {x: -9.449, y: 40.857, z: 5.202}
 --- !u!54 &2961592592901694029
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1494,12 +1494,12 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: 0
-    max: 0
+    min: -2
+    max: 2
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -1716,12 +1716,12 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: 0
-    max: 0
+    min: -1
+    max: 1
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -1786,14 +1786,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8388193526881568490}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.1872102, y: 0.06485877, z: -0.50107205, w: 0.8424206}
+  m_LocalRotation: {x: -0.061237622, y: -0.34887075, z: -0.0674947, w: 0.9327291}
   m_LocalPosition: {x: 5.762558e-11, y: 0.0039001487, z: -3.0400316e-10}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7521782895112338651}
   m_Father: {fileID: 6599846141765508941}
-  m_LocalEulerAnglesHint: {x: -14.502, y: 17.858, z: -63.779}
+  m_LocalEulerAnglesHint: {x: -9.284, y: -40.622, z: -4.835}
 --- !u!4 &5631856876424901430
 Transform:
   m_ObjectHideFlags: 0
@@ -1834,14 +1834,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2441265099025319339}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.61049825, y: 0.37521338, z: 0.611547, w: -0.3354356}
+  m_LocalRotation: {x: 0.5000064, y: 0.43287677, z: 0.69549096, w: -0.28089795}
   m_LocalPosition: {x: -0, y: 0.00278, z: -0.00048}
   m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6599846141765508941}
   m_Father: {fileID: 5736007323718351623}
-  m_LocalEulerAnglesHint: {x: -119.716995, y: -86.879, z: -5.5410156}
+  m_LocalEulerAnglesHint: {x: -117.991, y: -105.475006, z: -5.1539917}
 --- !u!4 &5736007323718351623
 Transform:
   m_ObjectHideFlags: 0
@@ -1932,12 +1932,12 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: 0
-    max: 0
+    min: -1
+    max: 1
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -2124,12 +2124,12 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: 0
-    max: 0
+    min: -10
+    max: 10
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -2169,7 +2169,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5892309801691520708}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2241,10 +2241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55db794da67c24c48b86ab859d306479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
   hor: 0
   ver: 0
-  fakeSword: {fileID: 1164820866}
+  fakeSword: {fileID: 1164820865}
   isGrounded: 0
 --- !u!4 &6599846141765508941
 Transform:
@@ -2324,7 +2324,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.0016958981, y: 0.001780404, z: -0.00080255396}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -2336,12 +2336,12 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: 0
-    max: 0
+    min: -10
+    max: 10
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -2390,14 +2390,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8018565407554103557}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6067963, y: -0.37745276, z: -0.61483604, w: -0.333623}
+  m_LocalRotation: {x: 0.49608767, y: -0.43461633, z: -0.6979927, w: -0.2789478}
   m_LocalPosition: {x: -0, y: 0.00278, z: -0.00048}
   m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4918819967882601606}
   m_Father: {fileID: 5736007323718351623}
-  m_LocalEulerAnglesHint: {x: -119.654, y: 87.527, z: 5.546997}
+  m_LocalEulerAnglesHint: {x: -117.935, y: 106.113, z: 5.119995}
 --- !u!1 &7350778165811894382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,7 +2614,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 3.4924602e-10, y: 0.0039001491, z: -4.6566134e-10}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -2626,12 +2626,12 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: 0
-    max: 0
+    min: -2
+    max: 2
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0

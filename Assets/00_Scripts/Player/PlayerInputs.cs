@@ -10,11 +10,13 @@ public class PlayerInputs : NetworkBehaviour
     private Transform player;
     private MotionCamera cam;
     [SerializeField]private float speed, hor, ver;
-    [SerializeField]private Transform fakeSword;
+    [SerializeField]private GameObject fakeSword;
+    private Rigidbody swordRb;
     [SerializeField] private bool isGrounded;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        swordRb = fakeSword.GetComponent<Rigidbody>();
         player = GetComponent<Transform>();
         cam = GetComponentInChildren<MotionCamera>();
     }
@@ -48,9 +50,9 @@ public class PlayerInputs : NetworkBehaviour
         Vector3 m = Input.mousePosition;
         float xSync = Screen.width/3f;
         float ySync = Screen.height/3f;
-        float hor = Mathf.Clamp((m.x / xSync) * 1.5f - 0.75f, -2f,2f);
-        float ver = Mathf.Clamp((m.y / ySync) * 2f - 1f, -1f, 2f);
-        fakeSword.position = player.position + player.right * hor + player.up * ver + player.forward * 1.5f;
+        float xPos = Mathf.Clamp((m.x / xSync) * 1.5f - 0.75f, -2f,2f);
+        float yPos = Mathf.Clamp((m.y / ySync) * 2f - 1f, -1f, 2.5f);
+        fakeSword.transform.position = player.position + player.right * xPos + player.up * yPos + player.forward * 1.5f;
     }
 }
 
