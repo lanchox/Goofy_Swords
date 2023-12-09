@@ -11,6 +11,14 @@ public class probeController : NetworkBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (PlayerPrefs.GetInt(NetSaveData.instance.isHost) == 1)
+        {
+            transform.position = new Vector3(-0.5f, 16.6f, 2.7f);
+        }
+        else
+        {
+            transform.position = new Vector3(-1.42f,16.6f,-21.9f);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -19,7 +27,7 @@ public class probeController : NetworkBehaviour
         {
             float hor = Input.GetAxisRaw("Horizontal") * speed;
             float ver = Input.GetAxisRaw("Vertical") * speed;
-            rb.AddForce(new Vector3(hor, 0f, ver));
+            rb.velocity = new Vector3(hor, rb.velocity.y, ver);
         }
     }
 }

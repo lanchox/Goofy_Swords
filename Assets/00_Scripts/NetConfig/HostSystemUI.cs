@@ -9,7 +9,6 @@ using TMPro;
 
 public class HostSystemUI : MonoBehaviour
 {
-    [SerializeField] private Button[] uiButtons;
     [SerializeField] private Transform popUp;
     public TextMeshProUGUI ipBar, portBar;
     private bool openPopUp, enterIp;
@@ -18,10 +17,6 @@ public class HostSystemUI : MonoBehaviour
         popUp.localScale = Vector3.zero;
         ipBar.text = "";
         portBar.text = "7777";
-        uiButtons[0].onClick.AddListener(ConnectTo);
-        uiButtons[1].onClick.AddListener(OpenPanel);
-        uiButtons[2].onClick.AddListener(ConnectTo);
-        uiButtons[3].onClick.AddListener(OpenPanel);
     }
 
     private void Update()
@@ -47,7 +42,7 @@ public class HostSystemUI : MonoBehaviour
                 }
                 else
                 {
-                     ConnectTo();
+                     NetSaveData.instance.SaveAddress();
                 }
             }
             if(Input.GetKeyDown(KeyCode.Backspace))
@@ -75,7 +70,7 @@ public class HostSystemUI : MonoBehaviour
         {
             popUp.DOScale(1f, 0.8f);
             openPopUp = true;
-            ipBar.text = "";
+            ipBar.text = "127.0.0.1";
             portBar.text = "7777";
         }
         else
@@ -83,9 +78,5 @@ public class HostSystemUI : MonoBehaviour
             popUp.DOScale(0f, 0.8f);
             openPopUp = false;
         }
-    }
-    public void ConnectTo()
-    {
-        SceneManager.LoadScene(1);
     }
 }
