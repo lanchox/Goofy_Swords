@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
-
 public class NetSaveData : MonoBehaviour
 {
     public string proxyAddress = "$-CaOdNr-N-eEsCsT-$";
@@ -14,30 +13,28 @@ public class NetSaveData : MonoBehaviour
     public string isHost = "$-PhAo-R-mTeY-$";
     public UnityTransport ut;
     public static NetSaveData instance;
-
     private void Awake()
     {
         instance = this;
     }
-    private void Start()
+    public void InicioJuego()
     {
-        if (SceneManager.GetActiveScene().name == "Escena Barco Pirata")
+        if (PlayerPrefs.GetInt(isHost) == 1)
         {
-            if (PlayerPrefs.GetInt(isHost) == 1)
-            {
-                NetworkManager.Singleton.StartHost();
-            }
-            else
-            {
-                ClientStarter();
-            }
+            NetworkManager.Singleton.StartHost();
+            Debug.Log("es Host");
+        }
+        else
+        {
+            ClientStarter();
+            Debug.Log("es Cliente");
         }
     }
 
     public void SaveAddress()
     {
-        PlayerPrefs.SetString(proxyAddress, GameObject.Find("ManagerAgent").GetComponent<HostSystemUI>().ipBar.text);
-        PlayerPrefs.SetString(proxyPort, GameObject.Find("ManagerAgent").GetComponent<HostSystemUI>().portBar.text);
+        PlayerPrefs.SetString(proxyAddress, FindObjectOfType<HostSystemUI>().ipBar.text);
+        PlayerPrefs.SetString(proxyPort, FindObjectOfType<HostSystemUI>().portBar.text);
         PlayerPrefs.SetInt(isHost, 0);
         SceneManager.LoadScene(1);
     }
