@@ -11,9 +11,9 @@ public class probeController : NetworkBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if (PlayerPrefs.GetInt(NetSaveData.instance.isHost) == 1)
+        if (NetworkManager.IsHost)
         {
-            transform.position = new Vector3(-0.5f, 16.6f, 2.7f);
+            transform.position = new Vector3(-28.9f,12.99f,24.9f);
         }
         else
         {

@@ -6,17 +6,17 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 
 public class HostSystemUI : MonoBehaviour
 {
-    [SerializeField] private Transform popUp;
+    [SerializeField] private Transform popUp, totalMenu;
+    [SerializeField] private GameObject cam;
     public TextMeshProUGUI ipBar, portBar;
     private bool openPopUp, enterIp;
     private void Start()
     {
         popUp.localScale = Vector3.zero;
-        ipBar.text = "";
-        portBar.text = "7777";
     }
 
     private void Update()
@@ -42,7 +42,7 @@ public class HostSystemUI : MonoBehaviour
                 }
                 else
                 {
-                     NetSaveData.instance.SaveAddress();
+                     NetSaveData.instance.ClientStarter();
                 }
             }
             if(Input.GetKeyDown(KeyCode.Backspace))
@@ -68,7 +68,7 @@ public class HostSystemUI : MonoBehaviour
     {
         if (!openPopUp)
         {
-            popUp.DOScale(1f, 0.8f);
+            popUp.DOScale(0.75f, 0.8f);
             openPopUp = true;
             ipBar.text = "127.0.0.1";
             portBar.text = "7777";
@@ -78,5 +78,11 @@ public class HostSystemUI : MonoBehaviour
             popUp.DOScale(0f, 0.8f);
             openPopUp = false;
         }
+    }
+
+    public void CloseTotalMenu()
+    {
+        totalMenu.DOScale(0f, 0.3f);
+        Destroy(cam);
     }
 }

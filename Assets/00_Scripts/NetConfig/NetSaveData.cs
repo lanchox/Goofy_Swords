@@ -8,47 +8,21 @@ using Unity.Netcode.Transports.UTP;
 using UnityEngine;
 public class NetSaveData : MonoBehaviour
 {
-    public string proxyAddress = "$-CaOdNr-N-eEsCsT-$";
-    public string proxyPort = "$-OpTo-H-rEtR-$";
-    public string isHost = "$-PhAo-R-mTeY-$";
     public UnityTransport ut;
     public static NetSaveData instance;
     private void Awake()
     {
         instance = this;
     }
-    public void InicioJuego()
-    {
-        if (PlayerPrefs.GetInt(isHost) == 1)
-        {
-            NetworkManager.Singleton.StartHost();
-            Debug.Log("es Host");
-        }
-        else
-        {
-            ClientStarter();
-            Debug.Log("es Cliente");
-        }
-    }
-
-    public void SaveAddress()
-    {
-        PlayerPrefs.SetString(proxyAddress, FindObjectOfType<HostSystemUI>().ipBar.text);
-        PlayerPrefs.SetString(proxyPort, FindObjectOfType<HostSystemUI>().portBar.text);
-        PlayerPrefs.SetInt(isHost, 0);
-        SceneManager.LoadScene(1);
-    }
-
     public void ClientStarter()
     {
-        ut.ConnectionData.Address = PlayerPrefs.GetString(proxyAddress);
-        string portString = PlayerPrefs.GetString(proxyPort);
+        ut.ConnectionData.Address = FindObjectOfType<HostSystemUI>().ipBar.text;
+        string portString = FindObjectOfType<HostSystemUI>().portBar.text;
         ut.ConnectionData.Port = ushort.Parse(portString);
         NetworkManager.Singleton.StartClient();
     }
-    public void HostExist()
+    public void HostStarter()
     {
-        PlayerPrefs.SetInt(isHost, 1);
-        SceneManager.LoadScene(1);
+        NetworkManager.Singleton.StartHost();
     }
 }
