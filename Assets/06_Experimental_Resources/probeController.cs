@@ -8,16 +8,18 @@ public class probeController : NetworkBehaviour
 {
     [SerializeField] float speed;
     Rigidbody rb;
+    [SerializeField] Camera cam;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
         if (NetworkManager.IsHost)
         {
-            transform.position = new Vector3(-28.9f,12.99f,24.9f);
+            transform.position = new Vector3(0f,12.99f,24.9f);
         }
-        else
+        if(NetworkManager.IsClient)
         {
-            transform.position = new Vector3(-1.42f,16.6f,-21.9f);
+            transform.position = new Vector3(0f,12.99f,-7.4f);
         }
     }
     // Update is called once per frame
@@ -29,12 +31,9 @@ public class probeController : NetworkBehaviour
             float ver = Input.GetAxisRaw("Vertical") * speed;
             rb.velocity = new Vector3(hor, rb.velocity.y, ver);
         }
-    }
-}
-public class ProbeClient : NetworkTransform 
-{
-    protected override bool OnIsServerAuthoritative()
-    {
-        return false;
+        else if(cam.enabled)
+        {
+            cam.enabled = false;
+        }
     }
 }

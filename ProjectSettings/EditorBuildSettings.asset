@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/05_Scenes/Store.unity
     guid: 95257a5ab4729a047a000d08ca2a541f
-  - enabled: 1
+  - enabled: 0
     path: Assets/05_Scenes/01_Connect.unity
     guid: 120a6925af868944bae7082b9d534d6b
   - enabled: 1
