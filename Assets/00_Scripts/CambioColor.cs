@@ -12,18 +12,10 @@ public class CambioColor : MonoBehaviour
     int precio;
     int monedaTotales = 900;
 
-    //public Color nuevoColor;
-    //private CharacterColorManager characterColorManager;
-
-    public void byColor()
-    {
-        //PlayerPrefs.SetInt("mi skin", 1);
-    }
 
     void Start()
     {
         precio = int.Parse(textoPrecio.text);
-        //characterColorManager = GameManager.instance.characterColorManager;
 
     }
 
@@ -41,9 +33,6 @@ public class CambioColor : MonoBehaviour
         monedaTotales -= precio;
         PlayerPrefs.SetInt("monedasTotales", monedaTotales);
         PlayerPrefs.SetInt("mi skin", 1);
-
-        //characterColorManager.ChangeCharacterColor(nuevoColor);
-        //PlayerPrefs.SetString("colorActual", ColorUtility.ToHtmlStringRGBA(nuevoColor)); // Guardar el nuevo color como cadena hexadecimal
 
         // Si es necesario desactivar el botón después de la compra, hazlo aquí.
         botonComprar.interactable = false;

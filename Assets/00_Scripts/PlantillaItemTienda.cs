@@ -24,7 +24,7 @@ public class PlantillaItemTienda : MonoBehaviour
     }
     private void Awake()
     {
-        characterColorManager = GameManager.instance.characterColorManager;
+      characterColorManager = GameManager.instance.characterColorManager;
     }
 
     // Update is called once per frame
