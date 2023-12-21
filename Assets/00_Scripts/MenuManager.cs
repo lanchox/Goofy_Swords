@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
     public void PlayButton()
     {
       
-        SceneManager.LoadScene("Banco_De_Pruebas");
+        SceneManager.LoadScene("EscenarioBarcoPirata");
     }
 
     public void OptionsButton()
