@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
-public class PlantillaItemTienda : MonoBehaviour
+public class CambioColor : MonoBehaviour
 {
     public Image imagen;
     public TextMeshProUGUI textoPrecio;
@@ -13,21 +12,21 @@ public class PlantillaItemTienda : MonoBehaviour
     int precio;
     int monedaTotales = 900;
 
-    public Color nuevoColor;
-    private CharacterColorManager characterColorManager;
+    //public Color nuevoColor;
+    //private CharacterColorManager characterColorManager;
 
-    // Start is called before the first frame update
+    public void byColor()
+    {
+        //PlayerPrefs.SetInt("mi skin", 1);
+    }
+
     void Start()
     {
         precio = int.Parse(textoPrecio.text);
-        
-    }
-    private void Awake()
-    {
-        characterColorManager = GameManager.instance.characterColorManager;
+        //characterColorManager = GameManager.instance.characterColorManager;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         monedaTotales = PlayerPrefs.GetInt("monedasTotales");
@@ -41,9 +40,10 @@ public class PlantillaItemTienda : MonoBehaviour
     {
         monedaTotales -= precio;
         PlayerPrefs.SetInt("monedasTotales", monedaTotales);
+        PlayerPrefs.SetInt("mi skin", 1);
 
-        characterColorManager.ChangeCharacterColor(nuevoColor);
-        PlayerPrefs.SetString("colorActual", ColorUtility.ToHtmlStringRGBA(nuevoColor)); // Guardar el nuevo color como cadena hexadecimal
+        //characterColorManager.ChangeCharacterColor(nuevoColor);
+        //PlayerPrefs.SetString("colorActual", ColorUtility.ToHtmlStringRGBA(nuevoColor)); // Guardar el nuevo color como cadena hexadecimal
 
         // Si es necesario desactivar el botón después de la compra, hazlo aquí.
         botonComprar.interactable = false;
@@ -53,8 +53,5 @@ public class PlantillaItemTienda : MonoBehaviour
     {
         PlayerPrefs.SetInt("monedasTotales", 900);
     }
+
 }
-
-
-
-

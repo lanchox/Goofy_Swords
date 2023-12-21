@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc617275205a5648b82746443799309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterColorManager: {fileID: 826269673}
+  characterColorManager: {fileID: 0}
 --- !u!1 &826269661
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,11 +855,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55db794da67c24c48b86ab859d306479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisCam: {fileID: 0}
   speed: 5
-  jumpForce: 5
-  layer:
-    serializedVersion: 2
-    m_Bits: 1
+  hor: 0
+  ver: 0
   fakeSword: {fileID: 1157093582}
   isGrounded: 0
 --- !u!114 &826269673
@@ -871,9 +870,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 826269661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dace980d5a6cd74a8cad93df9828727, type: 3}
+  m_Script: {fileID: 11500000, guid: c48a535510fbebb4ca036086c49d4406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skins: []
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
