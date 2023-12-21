@@ -16,7 +16,7 @@ public class Tienda : MonoBehaviour
             PlayerPrefs.SetInt("monedasTotales", 900);
         }
 
-        var plantillaItem = plantillaObjetoTienda.GetComponent<PlantillaItemTienda>();
+        var plantillaItem = plantillaObjetoTienda.GetComponent<CambioColor>();
 
         foreach (var item in informacionItem)
         {
