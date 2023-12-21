@@ -9,6 +9,7 @@ public class PlayerInputs : NetworkBehaviour
     private Rigidbody rb;
     private Transform player;
     private MotionCamera cam;
+    private Camera thisCam;
     [SerializeField]private float speed, hor, ver;
     [SerializeField]private GameObject fakeSword;
     [SerializeField] private bool isGrounded;
@@ -16,6 +17,7 @@ public class PlayerInputs : NetworkBehaviour
     {
         if (IsOwner)
         {
+            thisCam = GetComponentInChildren<Camera>();
             rb = GetComponent<Rigidbody>();
             player = GetComponent<Transform>();
             cam = GetComponentInChildren<MotionCamera>();
@@ -29,6 +31,10 @@ public class PlayerInputs : NetworkBehaviour
             PlayerMovement();
             PlayerRotation();
             SwordMovement();
+        }
+        else
+        {
+            thisCam.enabled = false;
         }
     }
     private void PlayerMovement()
