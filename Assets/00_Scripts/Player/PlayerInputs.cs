@@ -11,21 +11,25 @@ public class PlayerInputs : NetworkBehaviour
     private MotionCamera cam;
     [SerializeField]private float speed, hor, ver;
     [SerializeField]private GameObject fakeSword;
-    private Rigidbody swordRb;
     [SerializeField] private bool isGrounded;
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        swordRb = fakeSword.GetComponent<Rigidbody>();
-        player = GetComponent<Transform>();
-        cam = GetComponentInChildren<MotionCamera>();
+        if (IsOwner)
+        {
+            rb = GetComponent<Rigidbody>();
+            player = GetComponent<Transform>();
+            cam = GetComponentInChildren<MotionCamera>();
+        }
     }
 
     private void Update()
     {
-        PlayerMovement();
-        PlayerRotation();
-        SwordMovement();
+        if (IsOwner)
+        {
+            PlayerMovement();
+            PlayerRotation();
+            SwordMovement();
+        }
     }
     private void PlayerMovement()
     {
@@ -53,13 +57,5 @@ public class PlayerInputs : NetworkBehaviour
         float xPos = Mathf.Clamp((m.x / xSync) * 1.5f - 0.75f, -2f,2f);
         float yPos = Mathf.Clamp((m.y / ySync) * 2f - 1f, -1f, 2.5f);
         fakeSword.transform.position = player.position + player.right * xPos + player.up * yPos + player.forward * 1.5f;
-    }
-}
-
-public class ClientAuthoritative : NetworkTransform
-{
-    protected override bool OnIsServerAuthoritative()
-    {
-        return false;
     }
 }
